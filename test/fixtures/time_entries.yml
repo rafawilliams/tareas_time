@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_id: 1
+  user_id: 
+  task_id: 1
+  duracion: 1
+  start_time: 2018-10-07 17:03:23
+
+two:
+  project_id: 1
+  user_id: 
+  task_id: 1
+  duracion: 1
+  start_time: 2018-10-07 17:03:23

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TareasTime</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <div class="columns is-mobile">
+      <% if user_signed_in? %>
+       <div class="column is-one-third is-2 has-background-light">
+          <div class="column is-11">
+          <aside class="menu">
+          
+            <p class="menu-label has-text-black">
+              Tareas Time
+            </p>
+            <ul class="menu-list">
+              <li>
+                <%= link_to 'Tareas', tasks_path, class: 'is-active' %>
+              </li>
+              <li>
+                  <%= link_to 'Proyectos', proyects_path %>
+              </li>
+            </ul>
+            <p class="menu-label has-text-black">
+              Reportes
+            </p>
+            <ul class="menu-list">
+              <li><a>Diario</a></li>
+              <li><a>Por Proyecto</a></li>
+            </ul>
+            <p class="menu-label has-text-black">
+              bienvenido,
+              <strong><%= current_user.email %></strong>
+            </p>
+        </aside>
+        </div>
+        <% end %>
+       </div>
+          <div class="column <%= user_signed_in?? "is-9":"is-12" %>">
+              <%= yield %>  
+          </div>
+        <div>
+      </div>
+  </body>
+</html>

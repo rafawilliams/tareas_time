@@ -1,0 +1,32 @@
+<div class="content">
+<div class="notification is-info  <%= notice.try(:empty?)? "":"is-invisible" %>">
+  <button class="delete"></button>
+  <p id="notice"><%= notice %></p>
+</div>
+<h2 class="subtitle is-2">Listado de Projectos</h2>
+<p class="is-pulled-right">
+<%= link_to 'Nuevo Proyecto', new_proyect_path, class: "button is-success" %>
+</p>
+
+<table class="table is-fullwidth table is-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proyects.each do |proyect| %>
+      <tr>
+        <td width="90%"><%= proyect.nombre %></td>
+        <td>
+           <%= link_to raw('<i class="fa fa-edit"></i>'), edit_proyect_path(proyect) %>
+           <%= link_to raw('<i class="fas fa-trash-alt"></i>'), proyect, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

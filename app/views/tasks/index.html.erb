@@ -1,0 +1,47 @@
+<div class="content">
+<div class="notification is-info <%= notice.try(:empty?)? "":"is-invisible" %>">
+  <button class="delete"></button>
+  <p id="notice"><%= notice %></p>
+</div>
+<h2 class="subtitle is-2">Listado de tareas</h2>
+<p class="is-pulled-right">
+<%= link_to 'Nueva Tarea', new_task_path, class: "button is-success" %>
+</p>
+<table class="table is-fullwidth table is-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>User</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.nombre %></td>
+        <td><%= task.user.email%></td>
+        <td class="is-pulled-right">
+        <%= link_to '<i class="fa fa-edit"></i>', edit_task_path(task) %>
+        <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<nav class="pagination" role="navigation" aria-label="pagination">
+  <a class="pagination-previous" title="This is the first page" disabled>Previous</a>
+  <a class="pagination-next">Next page</a>
+  <ul class="pagination-list">
+    <li>
+      <a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
+    </li>
+    <li>
+      <a class="pagination-link" aria-label="Goto page 2">2</a>
+    </li>
+    <li>
+      <a class="pagination-link" aria-label="Goto page 3">3</a>
+    </li>
+  </ul>
+</nav>
+</div>
