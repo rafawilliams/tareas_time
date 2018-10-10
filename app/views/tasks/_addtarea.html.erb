@@ -1,0 +1,42 @@
+<%= form_with(url:"tasks/save_remote",model: task, remote: true) do |form| %>
+  <div class="field has-addons has-addons">
+    <p class="control">
+      
+      <input id="task_nombre" class="input" type="text" name="task[nombre]" placeholder="Nombre Tarea">
+    </p>
+    <p class="control">
+     
+     <a class="button is-primary" id="iniciar">
+      Iniciar
+    </a>
+    </p>
+    <p>
+    <%= form.submit "Parar", class: "button is-link" %>
+    <input id="task_duracion" class="input" type="hidden" name="task[duracion]" value="0">
+    </p>
+    <p class="control">
+        <span style="margin-left:15px" id="count_time">00:00:00</span>
+    </p>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(function () {
+    $('#iniciar').click(function(){
+        startTimer();
+    });
+
+    function startTimer()
+    {
+    var startTimestamp = moment().startOf("day");
+    var startduracion = moment().startOf("day");
+    setInterval(function() {
+        startTimestamp.add(1, 'second');
+        startduracion.add(1, 'second');
+        document.getElementById('count_time').innerHTML = startTimestamp.format('HH:mm:ss');
+        document.getElementById('task_duracion').value = startduracion.format('mm');
+        task_duracion
+    }, 1000);
+}
+  });
+</script>

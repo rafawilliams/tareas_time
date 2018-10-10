@@ -1,5 +1,5 @@
 class Proyect < ApplicationRecord
     validates :nombre, presence: true
-    has_many :time_entries, dependent: :destroy
+    has_many :tasks, dependent: :destroy
     belongs_to :user
 end

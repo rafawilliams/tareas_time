@@ -22,19 +22,20 @@
             </p>
             <ul class="menu-list">
               <li>
-                <%= link_to 'Tareas', tasks_path, class: 'is-active' %>
+
+                <%= link_to 'Tareas', tasks_path, class: controller_name == "tasks" ? 'is-active' : "" %>
               </li>
               <li>
-                  <%= link_to 'Proyectos', proyects_path %>
+                  <%= link_to 'Proyectos', proyects_path, class: controller_name == "proyects" ? 'is-active' : "" %>
               </li>
             </ul>
             <p class="menu-label has-text-black">
-              Reportes
+              <%= link_to('Logout', destroy_user_session_path, method: :delete) %>   
             </p>
             <ul class="menu-list">
-              <li><a>Diario</a></li>
+              <!--<li><a>Diario</a></li>
               <li><a>Por Proyecto</a></li>
-            </ul>
+            </ul>-->
             <p class="menu-label has-text-black">
               bienvenido,
               <strong><%= current_user.email %></strong>

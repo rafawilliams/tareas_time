@@ -13,23 +13,36 @@
 
   <div class="field">
     <%= form.label :nombre, class: "label" %>
-    <%= form.text_field :nombre, id: :task_nombre, class: "input" %>
+    <div class="control">
+      <%= form.text_field :nombre, id: :task_nombre, class: "input" %>
+    </div>
   </div>
 
-  <%= form.fields_for :time_entry do |g| %>
-    <div class="container">
-    <div class="field">
-    <%= g.label :start_time, class: "label" %>
-     <%= g.text_field :start_time, id: "datetimepicker1", class: "input"%>        
+  <div class="field">
+    <%= form.label "Projecto", class: "label" %>
+    <div class="control">
+      <%= form.select :proyect_id, Proyect.where(user: current_user).collect {|p| [ p.nombre, p.id ] }, { include_blank: 'Seleccione' } , class: "input" %>
     </div>
-    </div>
+  </div>
 
-    <div class="field">
-    <%= g.label "Duracion(min)", class: "label" %>
-    <%= g.number_field :duracion, class: "input"%>
+  <div class="field">
+    <%= form.label :fecha_inicio, class: "label" %>
+    <div class="control">
+      <%= form.date_field :fecha_inicio, id: :fecha_inicio, class: "input" %>
     </div>
+  </div>
 
-  <% end %>
+  <div class="field">
+    <%= form.label :hora_inicio, class: "label" %>
+    <div class="control">
+      <%= form.time_field :hora_inicio, id: :hora_inicio, class: "input" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label "Duracion(min)", class: "label" %>
+    <%= form.number_field :duracion, class: "input"%>
+  </div>
 
   <div class="field is-pulled-right">
     <%= form.submit "Guardar", class: "button is-link" %>
